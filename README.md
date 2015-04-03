@@ -1,7 +1,7 @@
-WebSockets Integ for React
+One Store To Rule Them All
 ==========================
 
-Basically will produce a WebSockets that you can call:
+Basically will produce a WebSockets/Single Entry API that you can call:
 
 ```javascript
 {
