@@ -34,7 +34,7 @@ class MyComp extends React.Component {
 Simple JSON Query
 -----------------
 
-``javascript
+```javascript
 var needThis = require('need-this').needThis; // or just null?
 
 class MyComp extends React.Component {
