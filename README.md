@@ -34,7 +34,7 @@ or doing just something simple as
 ``javascript
 var needThis = require('need-this').needThis; // or just null?
 
-class MyComp extends ReactComponent {
+class MyComp extends React.Component {
   getQuery() {
     return {
       modelName: {
@@ -43,6 +43,26 @@ class MyComp extends ReactComponent {
         attributeName3: needThis
       }
     };
+  }
+}
+```
+
+or maybe implementing one store:
+
+```javascript
+var store = require('./store');
+var needThis = require('need-this').needThis;
+
+class MyComp extends React.Component {
+  constructor() {
+    this.bindQuery();
+  }
+  bindQuery() {
+    store.iNeed({
+      modelName: {
+        attributeName1: needThis
+      }
+    });
   }
 }
 ```
