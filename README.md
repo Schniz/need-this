@@ -11,9 +11,11 @@ Basically will produce a WebSockets that you can call:
 
 and then the React will update the children.
 
-Running through the React App:
-------------------------------
+React Ideas
+===========
 
+GraphQL
+-------
 Still I can't decide between the `GraphQL` of facebook:
 
 ```javascript
@@ -29,7 +31,8 @@ class MyComp extends React.Component {
 }
 ```
 
-or doing just something simple as
+Simple JSON Query
+-----------------
 
 ``javascript
 var needThis = require('need-this').needThis; // or just null?
@@ -47,8 +50,9 @@ class MyComp extends React.Component {
 }
 ```
 
-or maybe implementing one store:
-
+One store with Socket.IO
+------------------------
+### Simple JSON
 ```javascript
 var store = require('./store');
 var needThis = require('need-this').needThis;
@@ -65,4 +69,34 @@ class MyComp extends React.Component {
     });
   }
 }
+```
+
+### Modeling
+- ID is just a string. you can render it the way you want, but it must be unique for not having problems.
+- All the data will be stored in `this.data`
+- Fucking simple implementation. `User.find(id)` will return a Promise: if there is something on the cache, it will provide it, but add a request to the dispatcher to grab a new copy.
+- 20ms between each request. so we'd request one time and then refresh the cache.
+
+```javascript
+class User extends NeedThisModel {
+  id() {
+    return this.data._id;
+  }
+}
+
+class Point extends NeedThisModel {
+  id() {
+    return [this.data.x, this.data.y].join(",")
+  }
+}
+
+// OR USING WRAPPERS TO HAVE SOME STATIC METHODS:
+
+class Post {
+  id() {
+    return this.slug;
+  }
+}
+
+module.exports = needThis(Post);
 ```
