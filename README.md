@@ -77,6 +77,8 @@ class MyComp extends React.Component {
 - Fucking simple implementation. `User.find(id)` will return a Promise: if there is something on the cache, it will provide it, but add a request to the dispatcher to grab a new copy.
 - 20ms between each request. so we'd request one time and then refresh the cache.
 
+#### OO Classes
+
 ```javascript
 class User extends NeedThisModel {
   id() {
@@ -89,9 +91,11 @@ class Point extends NeedThisModel {
     return [this.data.x, this.data.y].join(",")
   }
 }
+```
 
-// OR USING WRAPPERS TO HAVE SOME STATIC METHODS:
+#### Wrappers
 
+```javascript
 class Post {
   id() {
     return this.slug;
@@ -99,4 +103,18 @@ class Post {
 }
 
 module.exports = needThis(Post);
+```
+
+#### Wrapper in a store
+
+```javascript
+var store = require('./store'); // the only store
+
+class Message {
+  id() {
+    return `${this.from}:${this.to}:${this.timestamp}`;
+  }
+}
+
+store.needThis(Message);
 ```
