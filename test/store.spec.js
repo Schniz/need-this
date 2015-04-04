@@ -24,6 +24,31 @@ describe('NeedThis store', function() {
           done();
         }).catch(done);
       });
+      it('should call fetch only once for two searches', function(done) {
+        var oldFetcher = store.fetcher;
+        var times = 0;
+        store.fetcher = function(fetchData, callbacks) {
+          times++;
+          if (times > 1) return done(new Error('called fetch more than once'));
+          Object.keys(callbacks).forEach(function(storeName) {
+            Object.keys(callbacks[storeName]).forEach(function(ids) {
+              callbacks[storeName][ids].forEach(function(callback) {
+                callback();
+              });
+            });
+          });
+        };
+        Promise.all([
+          store.find('user', 'schniz'),
+          store.find('user', 'kfirstri')
+        ]).then(function() {
+          store.fetcher = oldFetcher;
+          done();
+        }).catch(function(err) {
+          store.fetcher = oldFetcher;
+          done(err);
+        });
+      });
     });
 
     describe('#fetch', function() {
