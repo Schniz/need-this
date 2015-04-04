@@ -1,0 +1,32 @@
+{
+  "name": "need-this",
+  "version": "0.0.0",
+  "description": "One Store To Rule Them All: simple store and modeling for react apps. GraphQL like, but somehow different.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.com:Schniz/react-need-this.git"
+  },
+  "keywords": [
+    "Store",
+    "react-component",
+    "reactjs",
+    "react"
+  ],
+  "author": "Gal Schlezinger",
+  "license": "ISC",
+  "dependencies": {
+    "babel": "^5.0.8",
+    "debug": "^2.1.3",
+    "immutable": "^3.7.1",
+    "superagent": "^1.1.0"
+  },
+  "devDependencies": {
+    "chai": "^2.2.0",
+    "debug": "^2.1.3",
+    "mocha": "^2.2.1"
+  }
+}
