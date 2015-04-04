@@ -108,7 +108,9 @@ module.exports = needThis(Post);
 #### Wrapper in a store
 
 ```javascript
-var store = require('./store'); // the only store
+// models/message.js
+
+var store = require('../store'); // the only store
 
 class Message {
   id() {
@@ -116,5 +118,20 @@ class Message {
   }
 }
 
-store.needThis(Message);
+module.exports = store.needThis(Message);
+
+// store.js
+
+var NeedThis = require('need-this');
+class MyStore extends NeedThis {
+  webSocketsURL() {
+    return "ws://localhost:8001/";
+  }
+
+  apiURL() {
+    return "ws://localhost:8001/";
+  }
+}
+
+module.exports = new MyStore();
 ```
