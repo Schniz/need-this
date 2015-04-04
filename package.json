@@ -8,7 +8,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.com:Schniz/react-need-this.git"
+    "url": "https://github.com/schniz/need-this"
+  },
+  "bugs": {
+    "url": "https://github.com/schniz/need-this/issues"
   },
   "keywords": [
     "Store",
@@ -28,5 +31,8 @@
     "chai": "^2.2.0",
     "debug": "^2.1.3",
     "mocha": "^2.2.1"
+  },
+  "directories": {
+    "test": "test"
   }
 }
